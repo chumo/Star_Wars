@@ -55,7 +55,7 @@ var dataText = JSON.stringify(data);
 
 // save (from http://stackoverflow.com/a/2497040/4564295)
 var fs = require('fs');
-fs.writeFile("StarWarsData.json", dataText, function(err) {
+fs.writeFile("../data/StarWarsData.json", dataText, function(err) {
     if(err) {
         return console.log(err);
     }
