@@ -1,3 +1,17 @@
+#author {
+	position:absolute;
+	margin: 0px;
+	top:10px;
+	left: 10px;
+	font-size: 25px;
+	font-family:Helvetica;
+}
+
+#author a {
+	text-decoration: none;
+	color:black;
+}
+
 body {
     text-align: center;
     font-family: Helvetica;
