@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+    font-family: Helvetica;
+}
+
+.poster {
+    height: 200px;
+    padding: 5px;
+}
+
+#mySVG circle {
+    fill: blue;
+}
