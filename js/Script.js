@@ -1,62 +1,43 @@
-// Build viz
+// Load data from a json file hosted in my github account
+d3.json('http://raw.githubusercontent.com/chumo/Star_Wars/gh-pages/data/StarWarsData.json',loadFilms);
 
-d3.json('http://swapi.co/api/films/',loadFilms);
-
-function loadFilms(data){
-
-    // List of films
-    films = _.sortBy(data.results,"episode_id");
-
-    // Build data base
-    planets = _.map(films,function(d){d.planets})
+function loadFilms(json){
+    // make data global
+    data = json;
 
     // Append image posters
     var posters = d3.select("#posters");
 
     posters.selectAll(".poster")
-    .data(films)
-    .enter()
-    .append("img")
-    .attr("class","poster")
-    .attr("src",function(d){return "img/poster"+d.episode_id+".jpg";})
-    .on("click",function(d){
-        d3.select("#selectedMovie").text(d.title);
-        d3.select("#openingCrawl").text(d.opening_crawl);
-        d3.json(d.url,updateSVG);
-    });
+        .data(data.films)
+        .enter()
+        .append("img")
+        .attr("class","poster")
+        .attr("src",function(d){return "img/poster"+d.id+".jpg";})
+        .on("click",updateViz);
 
 }
 
 // Update visualization when a poster is clicked
-function updateSVG(data){
-    // Append menu with film characteristics
-    var features = ["characters","planets","starships","vehicles","species"];
+function updateViz(film){
+    // text below posters
+    d3.select("#selectedMovie").text(film.title);
+    d3.select("#openingCrawl").text(film.opening_crawl);
 
+    // Update layout
     var mySVG = d3.select("#mySVG");
 
-    var circles = mySVG.selectAll("circle").data(features);
+    var filmPlanets = _.map(film.planets,function(d){return _.findWhere(data.planets,{id:d})});
+    var filmPlanetsName = _.map(filmPlanets, function(d){return d.name});
+    var filmPlanetsDiameter = _.map(filmPlanets, function(d){return d.diameter});
 
-    circles
-        .transition()
-        .attr("cx",function(d,i){return 100 + i*200;})
-        .attr("cy",100)
-        .attr("r",function(d){return 2*data[d].length;});
+    var filmPeople = _.map(film.people,function(d){return _.findWhere(data.people,{id:d})});
+    var filmPeoplePlanet = _.map(filmPeople,function(d){return d.planet});
+    var filmPeoplePlanetObject = _.map(filmPeoplePlanet,function(d){return _.findWhere(data.planets,{id:d})});
+    var filmPeoplePlanetName = _.map(filmPeoplePlanetObject,function(d){return d.name;});
+    var filmPeoplePlanetDiameter = _.map(filmPeoplePlanetObject,function(d){return d.diameter;});
 
-    circles
-        .enter()
-        .append("circle")
-        .on("mouseenter",function(){console.log('yep')})
-        .transition()
-        .attr("cx",function(d,i){return 100 + i*200;})
-        .attr("cy",100)
-        .attr("r",function(d){return 2*data[d].length;});
-
-    mySVG.selectAll("text")
-        .data(features)
-        .enter()
-        .append("text")
-            .attr("x",function(d,i){return 100 + i*200;})
-            .attr("y",100)
-            .text(function(d){return d});
+    // console.log(filmPlanetsName,filmPlanetsDiameter)
+    console.log(filmPeoplePlanet,filmPeoplePlanetDiameter)
 
 }

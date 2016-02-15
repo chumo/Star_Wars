@@ -550,247 +550,308 @@
     "planets": [{
         "id": 1,
         "name": "Tatooine",
-        "diameter": 10465
+        "diameter": 10465,
+        "population": 200000
     }, {
         "id": 2,
         "name": "Alderaan",
-        "diameter": 12500
+        "diameter": 12500,
+        "population": 2000000000
     }, {
         "id": 3,
         "name": "Yavin IV",
-        "diameter": 10200
+        "diameter": 10200,
+        "population": 1000
     }, {
         "id": 4,
         "name": "Hoth",
-        "diameter": 7200
+        "diameter": 7200,
+        "population": null
     }, {
         "id": 5,
         "name": "Dagobah",
-        "diameter": 8900
+        "diameter": 8900,
+        "population": null
     }, {
         "id": 6,
         "name": "Bespin",
-        "diameter": 118000
+        "diameter": 118000,
+        "population": 6000000
     }, {
         "id": 7,
         "name": "Endor",
-        "diameter": 4900
+        "diameter": 4900,
+        "population": 30000000
     }, {
         "id": 8,
         "name": "Naboo",
-        "diameter": 12120
+        "diameter": 12120,
+        "population": 4500000000
     }, {
         "id": 9,
         "name": "Coruscant",
-        "diameter": 12240
+        "diameter": 12240,
+        "population": 1000000000000
     }, {
         "id": 10,
         "name": "Kamino",
-        "diameter": 19720
+        "diameter": 19720,
+        "population": 1000000000
     }, {
         "id": 11,
         "name": "Geonosis",
-        "diameter": 11370
+        "diameter": 11370,
+        "population": 100000000000
     }, {
         "id": 12,
         "name": "Utapau",
-        "diameter": 12900
+        "diameter": 12900,
+        "population": 95000000
     }, {
         "id": 13,
         "name": "Mustafar",
-        "diameter": 4200
+        "diameter": 4200,
+        "population": 20000
     }, {
         "id": 14,
         "name": "Kashyyyk",
-        "diameter": 12765
+        "diameter": 12765,
+        "population": 45000000
     }, {
         "id": 15,
         "name": "Polis Massa",
-        "diameter": 0
+        "diameter": 0,
+        "population": 1000000
     }, {
         "id": 16,
         "name": "Mygeeto",
-        "diameter": 10088
+        "diameter": 10088,
+        "population": 19000000
     }, {
         "id": 17,
         "name": "Felucia",
-        "diameter": 9100
+        "diameter": 9100,
+        "population": 8500000
     }, {
         "id": 18,
         "name": "Cato Neimoidia",
-        "diameter": 0
+        "diameter": 0,
+        "population": 10000000
     }, {
         "id": 19,
         "name": "Saleucami",
-        "diameter": 14920
+        "diameter": 14920,
+        "population": 1400000000
     }, {
         "id": 20,
         "name": "Stewjon",
-        "diameter": 0
+        "diameter": 0,
+        "population": null
     }, {
         "id": 21,
         "name": "Eriadu",
-        "diameter": 13490
+        "diameter": 13490,
+        "population": 22000000000
     }, {
         "id": 22,
         "name": "Corellia",
-        "diameter": 11000
+        "diameter": 11000,
+        "population": 3000000000
     }, {
         "id": 23,
         "name": "Rodia",
-        "diameter": 7549
+        "diameter": 7549,
+        "population": 1300000000
     }, {
         "id": 24,
         "name": "Nal Hutta",
-        "diameter": 12150
+        "diameter": 12150,
+        "population": 7000000000
     }, {
         "id": 25,
         "name": "Dantooine",
-        "diameter": 9830
+        "diameter": 9830,
+        "population": 1000
     }, {
         "id": 26,
         "name": "Bestine IV",
-        "diameter": 6400
+        "diameter": 6400,
+        "population": 62000000
     }, {
         "id": 27,
         "name": "Ord Mantell",
-        "diameter": 14050
+        "diameter": 14050,
+        "population": 4000000000
     }, {
         "id": 28,
         "name": "unknown",
-        "diameter": 0
+        "diameter": 0,
+        "population": null
     }, {
         "id": 29,
         "name": "Trandosha",
-        "diameter": 0
+        "diameter": 0,
+        "population": 42000000
     }, {
         "id": 30,
         "name": "Socorro",
-        "diameter": 0
+        "diameter": 0,
+        "population": 300000000
     }, {
         "id": 31,
         "name": "Mon Cala",
-        "diameter": 11030
+        "diameter": 11030,
+        "population": 27000000000
     }, {
         "id": 32,
         "name": "Chandrila",
-        "diameter": 13500
+        "diameter": 13500,
+        "population": 1200000000
     }, {
         "id": 33,
         "name": "Sullust",
-        "diameter": 12780
+        "diameter": 12780,
+        "population": 18500000000
     }, {
         "id": 34,
         "name": "Toydaria",
-        "diameter": 7900
+        "diameter": 7900,
+        "population": 11000000
     }, {
         "id": 35,
         "name": "Malastare",
-        "diameter": 18880
+        "diameter": 18880,
+        "population": 2000000000
     }, {
         "id": 36,
         "name": "Dathomir",
-        "diameter": 10480
+        "diameter": 10480,
+        "population": 5200
     }, {
         "id": 37,
         "name": "Ryloth",
-        "diameter": 10600
+        "diameter": 10600,
+        "population": 1500000000
     }, {
         "id": 38,
         "name": "Aleen Minor",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 39,
         "name": "Vulpter",
-        "diameter": 14900
+        "diameter": 14900,
+        "population": 421000000
     }, {
         "id": 40,
         "name": "Troiken",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 41,
         "name": "Tund",
-        "diameter": 12190
+        "diameter": 12190,
+        "population": 0
     }, {
         "id": 42,
         "name": "Haruun Kal",
-        "diameter": 10120
+        "diameter": 10120,
+        "population": 705300
     }, {
         "id": 43,
         "name": "Cerea",
-        "diameter": null
+        "diameter": null,
+        "population": 450000000
     }, {
         "id": 44,
         "name": "Glee Anselm",
-        "diameter": 15600
+        "diameter": 15600,
+        "population": 500000000
     }, {
         "id": 45,
         "name": "Iridonia",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 46,
         "name": "Tholoth",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 47,
         "name": "Iktotch",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 48,
         "name": "Quermia",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 49,
         "name": "Dorin",
-        "diameter": 13400
+        "diameter": 13400,
+        "population": null
     }, {
         "id": 50,
         "name": "Champala",
-        "diameter": null
+        "diameter": null,
+        "population": 3500000000
     }, {
         "id": 51,
         "name": "Mirial",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 52,
         "name": "Serenno",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 53,
         "name": "Concord Dawn",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 54,
         "name": "Zolan",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 55,
         "name": "Ojom",
-        "diameter": null
+        "diameter": null,
+        "population": 500000000
     }, {
         "id": 56,
         "name": "Skako",
-        "diameter": null
+        "diameter": null,
+        "population": 500000000000
     }, {
         "id": 57,
         "name": "Muunilinst",
-        "diameter": 13800
+        "diameter": 13800,
+        "population": 5000000000
     }, {
         "id": 58,
         "name": "Shili",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 59,
         "name": "Kalee",
-        "diameter": 13850
+        "diameter": 13850,
+        "population": 4000000000
     }, {
         "id": 60,
         "name": "Umbara",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }, {
         "id": 61,
         "name": "Jakku",
-        "diameter": null
+        "diameter": null,
+        "population": null
     }],
     "films": [{
         "id": 4,

@@ -34,7 +34,7 @@ for (var i = 1; i < 38; i++) { // species
 
 for (var i = 1; i < 62; i++) { // planets
     var d = getJSON("http://swapi.co/api/planets/"+i+"/");
-    var j = {id:i, name:d.name, diameter:parseInt(d.diameter)};
+    var j = {id:i, name:d.name, diameter:parseInt(d.diameter), population:parseInt(d.population)};
     data.planets.push(j);
 }
 
