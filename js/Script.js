@@ -40,6 +40,10 @@ function updateViz(episode){
 
     // the planets will be the nodes
     var planets = episode.planets;
+    // _.map(planets,function(d){
+    //     d.x = 500 + Math.random()*200 - 100;
+    //     d.y = 400 + Math.random()*200 - 100;
+    // })
 
     // define force layout
     var force = d3.layout.force()
@@ -51,9 +55,22 @@ function updateViz(episode){
     // attach svg elements to every node
     var nodeGroups = mySVG.selectAll("g")
                         .data(planets)
-                        .enter().append("g");
+                        .enter().append("g")
+                        .on("mouseenter",showCharacters)
+                        .on("mouseout",hideCharacters);
 
-    nodeGroups
+    nodeGroups // character names
+        .selectAll(".character")
+        .data(function(d){return d.people;})
+        .enter()
+        .append("text")
+        .attr("class","character")
+        .style("text-anchor","middle")
+        .style("font-weight","bold")
+        .style("opacity",0)
+        .text(function(d){return d.name;});
+
+    nodeGroups // circles
         .append("circle")
         .attr("cx",0)
         .attr("cy",0)
@@ -63,16 +80,42 @@ function updateViz(episode){
         .style("stroke-width", "1.5px")
         .call(force.drag);
 
-    nodeGroups
+    nodeGroups // planet names
         .append("text")
         .style("text-anchor","middle")
         .attr("y",function(d){return -3-0.005*d.diameter/2;})
         .text(function(d){return d.name});
 
+
+
+    function showCharacters(){ // expand character names
+        var characters = d3.select(this).selectAll(".character");
+        var numberOfCharacters = characters.data().length;
+        //var numberOfCharacters = characters[0].length; // alternative way of retrieving the number of characters in this node
+        var radius = 0.005*d3.select(this).data()[0].diameter/2;
+        characters
+                .style("opacity",1)
+                .transition()
+		        .attr('x',function(d,i){return (radius+50)*Math.cos(i*2*Math.PI/numberOfCharacters)})
+		        .attr('y',function(d,i){return (radius+50)*Math.sin(i*2*Math.PI/numberOfCharacters)});
+    }
+
+    function hideCharacters(){ // collapse character names
+        var characters = d3.select(this).selectAll(".character");
+        characters
+                .style("opacity",0)
+                .transition()
+                .attr('x',0)
+                .attr('y',0);
+    }
+
     // define layout behaviour
     force.on("tick", function(e) {
+        // console.log(e)
         mySVG.selectAll("g")
-            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+            .attr("transform", function(d) {
+                // console.log(d)
+                return "translate(" + d.x + "," + d.y + ")"; });
         });
 
     // restart the layout.
