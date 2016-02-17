@@ -28,9 +28,12 @@ var episodes = us.map(films,function(film){
     var filmPeople = us.map(film.people,function(d){return us.findWhere(data.people,{id:d})});
     var filmPeoplePlanet = us.map(filmPeople,function(d){return d.planet});
     var filmPeoplePlanetObject = us.map(filmPeoplePlanet,function(d){return us.findWhere(data.planets,{id:d})});
+    filmPeoplePlanetObject.sort(function(a,b){return b.diameter-a.diameter;}); // sort descending. Needed to later have the bigger planets rendered first in the viz
+
     var filmPeoplePlanetName = us.map(filmPeoplePlanetObject,function(d){return d.name;});
 
     var filmUniquePlanetsName = us.unique(filmPeoplePlanetName);
+
     // var filmPeoplePlanetDiameter = us.map(filmPeoplePlanetObject,function(d){return d.diameter;});
 
     var filmUniquePlanets = us.map(filmUniquePlanetsName,function(d){return us.findWhere(data.planets,{name:d})});
