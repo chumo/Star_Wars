@@ -38,6 +38,13 @@ function updateViz(episode){
     var mySVG = d3.select("#mySVG");
     mySVG.selectAll("*").remove();
 
+    // header of list of characters for every planet
+    var listTitle = mySVG.append("text")
+        .attr("x",10)
+        .attr("y",30)
+        .style("font-weight","bold")
+        .text("Hover over a planet");
+
     // the planets will be the nodes
     var planets = episode.planets;
     // _.map(planets,function(d){
@@ -55,20 +62,7 @@ function updateViz(episode){
     // attach svg elements to every node
     var nodeGroups = mySVG.selectAll("g")
                         .data(planets)
-                        .enter().append("g")
-                        .on("mouseenter",showCharacters)
-                        .on("mouseout",hideCharacters);
-
-    nodeGroups // character names
-        .selectAll(".character")
-        .data(function(d){return d.people;})
-        .enter()
-        .append("text")
-        .attr("class","character")
-        .style("text-anchor","middle")
-        .style("font-weight","bold")
-        .style("opacity",0)
-        .text(function(d){return d.name;});
+                        .enter().append("g");
 
     nodeGroups // circles
         .append("circle")
@@ -78,7 +72,9 @@ function updateViz(episode){
         .style("fill", function(d){return popuScale(d.population/(Math.PI*Math.pow(d.diameter,2)));})
         .style("stroke", "black")
         .style("stroke-width", "1.5px")
-        .call(force.drag);
+        .call(force.drag)
+        .on("mouseenter",showCharacters)
+        .on("mouseout",hideCharacters);
 
     nodeGroups // planet names
         .append("text")
@@ -86,36 +82,53 @@ function updateViz(episode){
         .attr("y",function(d){return -3-0.005*d.diameter/2;})
         .text(function(d){return d.name});
 
+    function showCharacters(planet){ // show character names
+        // change circle color
+        d3.select(this)
+            .transition()
+            .style("fill","red");
 
+        // change list title
+        listTitle.text("Characters coming from "+planet.name+":");
 
-    function showCharacters(){ // expand character names
-        var characters = d3.select(this).selectAll(".character");
-        var numberOfCharacters = characters.data().length;
-        //var numberOfCharacters = characters[0].length; // alternative way of retrieving the number of characters in this node
-        var radius = 0.005*d3.select(this).data()[0].diameter/2;
-        characters
-                .style("opacity",1)
-                .transition()
-		        .attr('x',function(d,i){return (radius+50)*Math.cos(i*2*Math.PI/numberOfCharacters)})
-		        .attr('y',function(d,i){return (radius+50)*Math.sin(i*2*Math.PI/numberOfCharacters)});
+        // Populate list with character names
+        var characters = planet.people;
+        // bind
+        var listCharacters = mySVG
+                        .selectAll(".character")
+                        .data(characters);
+
+        // update
+        listCharacters
+            .attr("x",10)
+            .attr("y",function(d,i){return 60+20*i;})
+            .text(function(d){return "- "+d.name+" ("+d.species+")";})
+
+        // enter
+        listCharacters
+            .enter().append("text").attr("class","character")
+            .attr("x",10)
+            .attr("y",function(d,i){return 60+20*i;})
+            .text(function(d){return "- "+d.name+" ("+d.species+")";});
+
+        // exit
+        listCharacters
+            .exit()
+            .remove();
     }
 
-    function hideCharacters(){ // collapse character names
-        var characters = d3.select(this).selectAll(".character");
-        characters
-                .style("opacity",0)
-                .transition()
-                .attr('x',0)
-                .attr('y',0);
+    function hideCharacters(planet){ // change back circle color
+        d3.select(this)
+            .transition()
+            .style("fill", popuScale(planet.population/(Math.PI*Math.pow(planet.diameter,2))));
     }
 
     // define layout behaviour
-    force.on("tick", function(e) {
-        // console.log(e)
-        mySVG.selectAll("g")
+    force.on("tick", function() {
+        nodeGroups
             .attr("transform", function(d) {
-                // console.log(d)
-                return "translate(" + d.x + "," + d.y + ")"; });
+                return "translate(" + d.x + "," + d.y + ")";
+            });
         });
 
     // restart the layout.
