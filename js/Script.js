@@ -1,5 +1,5 @@
 // Load data from a json file hosted in my github account
-d3.json('http://raw.githubusercontent.com/chumo/Star_Wars/gh-pages/data/EpisodesData.json',loadEpisodes);
+d3.json('https://raw.githubusercontent.com/chumo/Star_Wars/gh-pages/data/EpisodesData.json',loadEpisodes);
 
 function loadEpisodes(jsonData){
 
@@ -30,6 +30,10 @@ function loadEpisodes(jsonData){
 
 // Update visualization when a poster is clicked
 function updateViz(episode){
+    // enlarge selected poster
+    d3.selectAll(".poster").transition().style("height","200px");
+    d3.select(this).transition().style("height","220px");
+
     // text below posters
     d3.select("#selectedMovie").text(episode.title);
     d3.select("#openingCrawl").text(episode.opening_crawl);
