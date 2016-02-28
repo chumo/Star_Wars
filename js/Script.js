@@ -1,3 +1,12 @@
+var W = 1000;
+var H = 600;
+
+/// append SVG element
+var mySVG = d3.select("body")
+                .append("svg")
+                .attr("width","1000px")
+                .attr("height","800px");
+
 // Load data from a json file hosted in my github account
 d3.json('https://raw.githubusercontent.com/chumo/Star_Wars/gh-pages/data/EpisodesData.json',loadEpisodes);
 
@@ -39,7 +48,6 @@ function updateViz(episode){
     d3.select("#openingCrawl").text(episode.opening_crawl);
 
     // remove previous layout
-    var mySVG = d3.select("#mySVG");
     mySVG.selectAll("*").remove();
 
     // header of list of characters for every planet
@@ -60,7 +68,7 @@ function updateViz(episode){
     var force = d3.layout.force()
         .nodes(planets)
         // .links([])
-        .size([1000, 800])
+        .size([W, H])
         .charge(-300);
 
     // attach svg elements to every node
