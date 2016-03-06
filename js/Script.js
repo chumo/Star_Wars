@@ -10,8 +10,9 @@ var mySVG = d3.select("body")
 // Load data from a json file hosted in my github account
 d3.json('https://raw.githubusercontent.com/chumo/Star_Wars/gh-pages/data/EpisodesData.json',loadEpisodes);
 
-function loadEpisodes(jsonData){
-
+function loadEpisodes(error,jsonData){
+    if (error) return console.warn(error);
+    
     // Append image posters
     var posters = d3.select("#posters");
 
